@@ -7,11 +7,11 @@ import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.moneymoney.app.model.account.pojo.MMCurrentAccount;
 import com.moneymoney.app.model.account.pojo.MMCustomer;
@@ -29,36 +29,48 @@ public class AppController extends HttpServlet {
 	MMCustomer activecustomer = null;
 	RequestDispatcher dispatcher = null;
 	Map<String,String> loginDetails = new HashMap<>();
-	ServletRequest session;
+
 	
 	public AppController() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
+		HttpSession session = request.getSession();
+		loginDetails.put("Nishad", "Nishad");
+		loginDetails.put("admin", "admin");
+		loginDetails.put("Sayali", "Sayali");
+		loginDetails.put("Drishti", "Drishti");
 		switch (action) {
-//		case "/login.app":
-//			response.sendRedirect("login.jsp");
-//			break;
-//		
-//		case "/validate.app":
-//			String username = request.getParameter("username");
-//			String password = request.getParameter("password");
-//			String savedPassword = loginDetails.get(username);
-//			if(savedPassword.equals(password)) {
-//				session.setAttribute("user",username);
-//				response.sendRedirect("home.jsp");
-//			}
-//			else {
-//				response.sendRedirect("error.jsp");
-//			}
-//			break;
-//		case "/signnup.app":
-//			username = request.getParameter("username");
-//			password = request.getParameter("password");
-//			loginDetails.put(username, password);
-//			response.sendRedirect("login.jsp");
-//			break;	
+		case "/login.app":
+	
+			response.sendRedirect("login.jsp");
+			break;
+		
+		case "/validate.app":
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			String savedPassword = loginDetails.get(username);
+			System.out.println(username);
+			System.out.println(password);
+			System.out.println(savedPassword);
+			boolean flag = password.equals(savedPassword);
+			System.out.println(flag);
+			if(flag) {
+	
+				session.setAttribute("user",username);
+				response.sendRedirect("home.jsp");
+			}
+			else {
+				response.sendRedirect("error.jsp");
+			}
+			break;
+		case "/signnup.app":
+			username = request.getParameter("username");
+			password = request.getParameter("password");
+			loginDetails.put(username, password);
+			response.sendRedirect("login.jsp");
+			break;	
 		case "/addNewAccount.app":
 			response.sendRedirect("addNewAccount.jsp");
 			break;
@@ -169,7 +181,7 @@ public class AppController extends HttpServlet {
 			dispatcher.forward(request, response);
 			break;
 		default:
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("login.jsp");
 			break;
 		}
 	}

@@ -6,21 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>body {
-	background-color: #7fffda;
-}</style>
 </head>
 <body>
+
 <div align="center">
-<h1>Money Money Bank</h1>
-<h3>Your Partner to Success!</h3> 
-</div>
-<div>
-<a href="home.jsp">Home</a>
-|Welcome ${sessionScope.user}!
-<jstl:if test='${sessionScope.user != null }'>
-<p align="right"><a href="logout.app">LogOut</a></p>
-</jstl:if>
+<form action="validate.app">
+User name:<input type="text" required="required" name="username">
+Log in:<input type="text" required="required" name="password">
+<input type="submit" value="Login">
+</form>
 </div>
 </body>
 </html>

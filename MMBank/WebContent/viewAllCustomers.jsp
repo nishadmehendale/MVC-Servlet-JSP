@@ -14,7 +14,7 @@
 <div>
 	<jsp:include page="header.jsp"></jsp:include>
 </div>
-${requestScope.customers}
+
 <div align="center">
 
 <h1>Account Holder List</h1>
@@ -26,7 +26,7 @@ ${requestScope.customers}
 </jstl:forEach>
 </table>
 </jstl:if>
-<jstl:if test="${requestScope.customers}">
+<jstl:if test="${requestScope.customers == null}">
 <h2>No customers found!</h2>
 </jstl:if>
 </div>

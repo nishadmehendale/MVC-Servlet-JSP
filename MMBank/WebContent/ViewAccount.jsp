@@ -25,7 +25,6 @@ pageEncoding="ISO-8859-1"%>
 <jstl:if test="${classType.equals('MMSavingsAccount')}">
 <th>Salary</th>
 </jstl:if>
-
 </tr>
 <tr>
 <td>${bankAccount.accountNumber}</td>

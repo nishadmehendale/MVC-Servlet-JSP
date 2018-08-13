@@ -21,6 +21,7 @@
 	<tr><td><a href="withdrawAmount.app">Withdraw Amount</a></td></tr>
 	<tr><td><a href="depositAmount.app">Deposit Amount</a></td></tr>
 	<tr><td><a href="fundTransfer.app">Fund Transfer</a></td></tr>
+	<tr><td><a href="login.app">Login</a></td></tr>
 </table>
 </div>
 <div>
